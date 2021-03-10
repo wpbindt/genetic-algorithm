@@ -21,7 +21,7 @@ class GeneticAlgorithm(Generic[Candidate]):
             self.fitness
         )
         bred = self.breeder.breed(selected)
-        return self.mutator.mutate(bred, self.fitness)
+        return self.mutator.mutate(bred)
 
     def run(self, population):
         yield from accumulate(
