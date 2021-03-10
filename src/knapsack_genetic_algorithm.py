@@ -1,3 +1,4 @@
+from __future__ import annotations
 from typing import Callable, List
 
 from .bit_string_breeder import BitStringBreeder
@@ -8,43 +9,43 @@ from .tournament_selector import TournamentSelector
 BitStringType = List[bool]
 
 
-class KnapSackGA(GeneticAlgorithm[BitStringType]):
+class KnapsackGA(GeneticAlgorithm[BitStringType]):
     def __init__(
         self,
         crossover_rate: float,
         mutation_rate: float,
-        weights: List[float],
-        values: List[float],
-        max_weight: float
+        knapsack_definition: KnapsackDefinition
     ) -> None:
         super().__init__(
             selector=TournamentSelector(),
             breeder=BitStringBreeder(crossover_rate),
             mutator=BitStringMutator(mutation_rate),
-            fitness=KnapSackGA._build_fitness_function(
-                weights=weights,
-                values=values,
-                max_weight=max_weight
-            )
+            fitness=KnapsackGA._build_fitness_function(knapsack_definition)
         )
 
     @staticmethod
     def _build_fitness_function(
-        weights: List[float],
-        values: List[float],
-        max_weight: float
+        knapsack_definition: KnapsackDefinition
     ) -> Callable[[BitStringType], float]:
         def knapsack_value(individual: BitStringType) -> float:
             weight = sum(
                 bit * weight
-                for bit, weight in zip(individual, weights)
+                for bit, weight in zip(individual, knapsack_definition.weights)
             )
-            if weight > max_weight:
+            if weight > knapsack_definition.max_weight:
                 return 0
 
             return sum(
                 bit * value
-                for bit, value in zip(individual, values)
+                for bit, value in zip(individual, knapsack_definition.values)
             )
 
         return knapsack_value
+
+
+@dataclass
+class KnapsackDefinition:
+    weights: List[float]
+    values: List[float]
+    max_weight: float
+
