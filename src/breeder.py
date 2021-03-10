@@ -1,10 +1,10 @@
 from abc import ABC, abstractmethod
 from typing import Generic
 
-from genetic_algorithm import T
+from .candidate_type import Candidate
 
 
-class Breeder(ABC, Generic[T]):
+class Breeder(ABC, Generic[Candidate]):
     @abstractmethod
     def breed(self, population):
         ...

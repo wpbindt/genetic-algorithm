@@ -1,10 +1,10 @@
 from abc import ABC, abstractmethod
 from typing import Generic
 
-from genetic_algorithm import T
+from .candidate_type import Candidate
 
 
-class Selector(ABC, Generic[T]):
+class Selector(ABC, Generic[Candidate]):
     @abstractmethod
     def select(self, population, fitness):
         ...
