@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass
 from typing import Callable, List
 
 from .bit_string_breeder import BitStringBreeder
@@ -48,4 +49,3 @@ class KnapsackDefinition:
     weights: List[float]
     values: List[float]
     max_weight: float
-
