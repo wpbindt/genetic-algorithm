@@ -4,21 +4,23 @@ from typing import List
 
 from .mutator import Mutator
 
+BitStringType = List[bool]
+
 
 @dataclass
-class BitStringMutator(Mutator[List[bool]]):
+class BitStringMutator(Mutator[BitStringType]):
     mutation_rate: float
 
     def mutate(
         self,
-        population: List[List[bool]]
-    ) -> List[List[bool]]:
+        population: List[BitStringType]
+    ) -> List[BitStringType]:
         return [
             self._mutate_individual(individual)
             for individual in population
         ]
 
-    def _mutate_individual(self, individual: List[bool]) -> List[bool]:
+    def _mutate_individual(self, individual: BitStringType) -> BitStringType:
         return [
             bit if random.random() > self.mutation_rate else not bit
             for bit in individual
