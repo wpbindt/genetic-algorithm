@@ -16,6 +16,7 @@ def test_random_mutator_no_mutation(mock_random):
     mutants = mutator.mutate(population)
     assert mutants == population
 
+
 @patch('random.uniform')
 @patch('random.random')
 def test_random_mutator_mutation(mock_random, mock_uniform):
