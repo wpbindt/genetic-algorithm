@@ -19,10 +19,10 @@ def test_bit_string_breeder_no_crossover(random_mock):
 
 
 @patch('random.random')
-@patch('random.randint')
-def test_bit_string_breeder_crossover(randint_mock, random_mock):
+@patch('random.randrange')
+def test_bit_string_breeder_crossover(randrange_mock, random_mock):
     random_mock.return_value = 0
-    randint_mock.return_value = 2
+    randrange_mock.return_value = 2
     breeder = BitStringBreeder(0.1)
     population = [
         4 * [True],

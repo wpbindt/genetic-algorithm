@@ -13,22 +13,23 @@ class BitStringBreeder(Breeder[BitStringType]):
     crossover_rate: float
 
     def breed(self, population: List[BitStringType]) -> List[BitStringType]:
-        new_population = []
+        new_population: List[BitStringType] = []
         while len(new_population) < len(population):
-            parents = tuple(random.sample(population, 2))
-            new_population.extend(self._crossover(parents))
+            parent1, parent2 = random.sample(population, 2)
+            new_population.extend(self._crossover(parent1, parent2))
 
         return new_population
 
     def _crossover(
         self,
-        parents: Tuple[BitStringType, BitStringType]
+        parent1: BitStringType,
+        parent2: BitStringType
     ) -> Tuple[BitStringType, BitStringType]:
         if random.random() >= self.crossover_rate:
-            return parents
+            return parent1, parent2
 
-        crossover_point = random.randint(0, len(parents[0]) - 1)
+        crossover_point = random.randrange(len(parent1))
         return (
-            parents[0][:crossover_point] + parents[1][crossover_point:],
-            parents[1][:crossover_point] + parents[0][crossover_point:]
+            parent1[:crossover_point] + parent2[crossover_point:],
+            parent2[:crossover_point] + parent1[crossover_point:]
         )

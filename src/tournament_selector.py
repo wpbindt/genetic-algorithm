@@ -14,7 +14,7 @@ class TournamentSelector(Selector[Candidate]):
         if len(population) <= 1:
             return population
 
-        new_population = []
+        new_population: List[Candidate] = []
         while len(new_population) < len(population):
             new_member = max(
                 sample(population, 2),

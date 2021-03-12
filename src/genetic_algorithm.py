@@ -1,4 +1,3 @@
-from dataclasses import dataclass
 from itertools import accumulate, repeat
 from typing import Callable, Generator, Generic, List
 
@@ -8,12 +7,18 @@ from .mutator import Mutator
 from .selector import Selector
 
 
-@dataclass
 class GeneticAlgorithm(Generic[Candidate]):
-    selector: Selector[Candidate]
-    breeder: Breeder[Candidate]
-    mutator: Mutator[Candidate]
-    fitness: Callable[[Candidate], float]
+    def __init__(
+        self,
+        selector: Selector[Candidate],
+        breeder: Breeder[Candidate],
+        mutator: Mutator[Candidate],
+        fitness: Callable[[Candidate], float]
+    ) -> None:
+        self.selector = selector
+        self.breeder = breeder
+        self.mutator = mutator
+        self.fitness = fitness
 
     def _run_once(self, population: List[Candidate]) -> List[Candidate]:
         selected = self.selector.select(
