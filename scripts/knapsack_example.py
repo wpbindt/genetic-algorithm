@@ -1,4 +1,7 @@
 import random
+import sys
+
+sys.path.append('.')
 
 from src.knapsack_genetic_algorithm import KnapsackDefinition, KnapsackGA
 

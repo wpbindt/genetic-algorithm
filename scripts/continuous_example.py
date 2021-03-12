@@ -1,5 +1,8 @@
 import random
 from statistics import mean
+import sys
+
+sys.path.append('.')
 
 from src.continuous_genetic_algorithm import ContinuousGA
 
