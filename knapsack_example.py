@@ -1,4 +1,4 @@
-import numpy
+import random
 
 from src.knapsack_genetic_algorithm import KnapsackDefinition, KnapsackGA
 
@@ -15,10 +15,10 @@ ga = KnapsackGA(
 )
 
 population_size = 200
-population = numpy.random.choice(
-    [True, False],
-    size=(population_size, 5)
-).tolist()
+population = [
+    random.choices([True, False], k=5)
+    for _ in range(population_size)
+]
 
 score = sum(
     ga.fitness(individual)
