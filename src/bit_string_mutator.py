@@ -2,13 +2,11 @@ from dataclasses import dataclass
 import random
 from typing import List
 
-from .mutator import Mutator
-
 BitStringType = List[bool]
 
 
 @dataclass
-class BitStringMutator(Mutator[BitStringType]):
+class BitStringMutator:
     mutation_rate: float
 
     def mutate(

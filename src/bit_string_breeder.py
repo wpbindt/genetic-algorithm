@@ -2,14 +2,11 @@ from dataclasses import dataclass
 import random
 from typing import List, Tuple
 
-from .breeder import Breeder
-
-
 BitStringType = List[bool]
 
 
 @dataclass
-class BitStringBreeder(Breeder[BitStringType]):
+class BitStringBreeder:
     crossover_rate: float
 
     def breed(self, population: List[BitStringType]) -> List[BitStringType]:

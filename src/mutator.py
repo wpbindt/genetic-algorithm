@@ -1,10 +1,8 @@
-from abc import ABC, abstractmethod
-from typing import Generic, List
+from typing import List, Protocol
 
 from .candidate_type import Candidate
 
 
-class Mutator(ABC, Generic[Candidate]):
-    @abstractmethod
+class Mutator(Protocol[Candidate]):
     def mutate(self, population: List[Candidate]) -> List[Candidate]:
         ...

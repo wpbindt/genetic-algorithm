@@ -2,11 +2,9 @@ from dataclasses import dataclass
 import random
 from typing import List
 
-from .mutator import Mutator
-
 
 @dataclass
-class RandomMutator(Mutator[float]):
+class RandomMutator:
     mutation_rate: float
     upper_bound: float
     lower_bound: float

@@ -2,10 +2,9 @@ from random import sample
 from typing import Callable, List
 
 from .candidate_type import Candidate
-from .selector import Selector
 
 
-class TournamentSelector(Selector[Candidate]):
+class TournamentSelector:
     def select(
         self,
         population: List[Candidate],

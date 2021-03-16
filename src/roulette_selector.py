@@ -2,10 +2,9 @@ import random
 from typing import Callable, List
 
 from .candidate_type import Candidate
-from .selector import Selector
 
 
-class RouletteSelector(Selector[Candidate]):
+class RouletteSelector:
     def select(
         self,
         population: List[Candidate],

@@ -1,10 +1,8 @@
-from abc import ABC, abstractmethod
-from typing import Generic, List
+from typing import List, Protocol
 
 from .candidate_type import Candidate
 
 
-class Breeder(ABC, Generic[Candidate]):
-    @abstractmethod
+class Breeder(Protocol[Candidate]):
     def breed(self, population: List[Candidate]) -> List[Candidate]:
         ...

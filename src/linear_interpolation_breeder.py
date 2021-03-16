@@ -2,11 +2,9 @@ from dataclasses import dataclass
 import random
 from typing import List, Tuple
 
-from .breeder import Breeder
-
 
 @dataclass
-class LinearInterpolationBreeder(Breeder[float]):
+class LinearInterpolationBreeder:
     crossover_rate: float
 
     def breed(self, population: List[float]) -> List[float]:

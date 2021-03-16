@@ -1,11 +1,9 @@
-from abc import ABC, abstractmethod
-from typing import Callable, Generic, List
+from typing import Callable, List, Protocol
 
 from .candidate_type import Candidate
 
 
-class Selector(ABC, Generic[Candidate]):
-    @abstractmethod
+class Selector(Protocol[Candidate]):
     def select(
         self,
         population: List[Candidate],
