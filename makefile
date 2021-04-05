@@ -2,9 +2,7 @@ CLI := docker run -it --rm wpbindt/genetic-algorithm
 
 build-image :
 	docker build -qt wpbindt/genetic-algorithm .
-test :
-	make build-image
+test : build-image
 	$(CLI) python3 -m pytest -q
-mypy :
-	make build-image
+mypy : build-image
 	$(CLI) mypy tests src scripts
