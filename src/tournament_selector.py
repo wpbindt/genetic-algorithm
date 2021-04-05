@@ -1,5 +1,5 @@
 from random import sample
-from typing import Callable, List
+from typing import Callable
 
 from .candidate_type import Candidate
 
@@ -7,13 +7,13 @@ from .candidate_type import Candidate
 class TournamentSelector:
     def select(
         self,
-        population: List[Candidate],
+        population: list[Candidate],
         fitness: Callable[[Candidate], float]
-    ) -> List[Candidate]:
+    ) -> list[Candidate]:
         if len(population) <= 1:
             return population
 
-        new_population: List[Candidate] = []
+        new_population: list[Candidate] = []
         while len(new_population) < len(population):
             new_member = max(
                 sample(population, 2),

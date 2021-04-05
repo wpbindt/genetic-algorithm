@@ -1,16 +1,15 @@
 from dataclasses import dataclass
 import random
-from typing import List, Tuple
 
-BitStringType = List[bool]
+BitStringType = list[bool]
 
 
 @dataclass
 class BitStringBreeder:
     crossover_rate: float
 
-    def breed(self, population: List[BitStringType]) -> List[BitStringType]:
-        new_population: List[BitStringType] = []
+    def breed(self, population: list[BitStringType]) -> list[BitStringType]:
+        new_population: list[BitStringType] = []
         while len(new_population) < len(population):
             parent1, parent2 = random.sample(population, 2)
             new_population.extend(self._crossover(parent1, parent2))
@@ -21,7 +20,7 @@ class BitStringBreeder:
         self,
         parent1: BitStringType,
         parent2: BitStringType
-    ) -> Tuple[BitStringType, BitStringType]:
+    ) -> tuple[BitStringType, BitStringType]:
         if random.random() >= self.crossover_rate:
             return parent1, parent2
 

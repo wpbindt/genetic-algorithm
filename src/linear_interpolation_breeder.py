@@ -1,14 +1,13 @@
 from dataclasses import dataclass
 import random
-from typing import List, Tuple
 
 
 @dataclass
 class LinearInterpolationBreeder:
     crossover_rate: float
 
-    def breed(self, population: List[float]) -> List[float]:
-        new_population: List[float] = []
+    def breed(self, population: list[float]) -> list[float]:
+        new_population: list[float] = []
 
         while len(new_population) < len(population):
             parent1, parent2 = random.sample(population, 2)
@@ -20,7 +19,7 @@ class LinearInterpolationBreeder:
         self,
         parent1: float,
         parent2: float
-    ) -> Tuple[float, float]:
+    ) -> tuple[float, float]:
         if random.random() > self.crossover_rate:
             return parent1, parent2
 

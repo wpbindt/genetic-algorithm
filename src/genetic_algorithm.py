@@ -1,5 +1,5 @@
 from itertools import accumulate, repeat
-from typing import Callable, Generator, Generic, List
+from typing import Callable, Generator, Generic
 
 from .breeder import Breeder
 from .candidate_type import Candidate
@@ -20,7 +20,7 @@ class GeneticAlgorithm(Generic[Candidate]):
         self.mutator = mutator
         self.fitness = fitness
 
-    def _run_once(self, population: List[Candidate]) -> List[Candidate]:
+    def _run_once(self, population: list[Candidate]) -> list[Candidate]:
         selected = self.selector.select(
             population,
             self.fitness
@@ -30,8 +30,8 @@ class GeneticAlgorithm(Generic[Candidate]):
 
     def run(
         self,
-        population: List[Candidate]
-    ) -> Generator[List[Candidate], None, None]:
+        population: list[Candidate]
+    ) -> Generator[list[Candidate], None, None]:
         yield from accumulate(
             repeat(population),
             lambda x, y: self._run_once(x)

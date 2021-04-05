@@ -1,4 +1,4 @@
-from typing import Callable, List, Protocol
+from typing import Callable, Protocol
 
 from .candidate_type import Candidate
 
@@ -6,7 +6,7 @@ from .candidate_type import Candidate
 class Selector(Protocol[Candidate]):
     def select(
         self,
-        population: List[Candidate],
+        population: list[Candidate],
         fitness: Callable[[Candidate], float]
-    ) -> List[Candidate]:
+    ) -> list[Candidate]:
         ...

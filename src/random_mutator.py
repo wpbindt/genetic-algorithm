@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 import random
-from typing import List
 
 
 @dataclass
@@ -9,7 +8,7 @@ class RandomMutator:
     upper_bound: float
     lower_bound: float
 
-    def mutate(self, population: List[float]) -> List[float]:
+    def mutate(self, population: list[float]) -> list[float]:
         return [
             self._mutate_individual(individual)
             for individual in population

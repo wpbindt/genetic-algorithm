@@ -1,8 +1,8 @@
-from typing import List, Protocol
+from typing import Protocol
 
 from .candidate_type import Candidate
 
 
 class Breeder(Protocol[Candidate]):
-    def breed(self, population: List[Candidate]) -> List[Candidate]:
+    def breed(self, population: list[Candidate]) -> list[Candidate]:
         ...

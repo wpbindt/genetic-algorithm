@@ -1,5 +1,5 @@
 import random
-from typing import Callable, List
+from typing import Callable
 
 from .candidate_type import Candidate
 
@@ -7,9 +7,9 @@ from .candidate_type import Candidate
 class RouletteSelector:
     def select(
         self,
-        population: List[Candidate],
+        population: list[Candidate],
         fitness: Callable[[Candidate], float]
-    ) -> List[Candidate]:
+    ) -> list[Candidate]:
         fitness_scores = [
             fitness(individual)
             for individual in population

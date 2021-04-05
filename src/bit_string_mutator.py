@@ -1,8 +1,7 @@
 from dataclasses import dataclass
 import random
-from typing import List
 
-BitStringType = List[bool]
+BitStringType = list[bool]
 
 
 @dataclass
@@ -11,8 +10,8 @@ class BitStringMutator:
 
     def mutate(
         self,
-        population: List[BitStringType]
-    ) -> List[BitStringType]:
+        population: list[BitStringType]
+    ) -> list[BitStringType]:
         return [
             self._mutate_individual(individual)
             for individual in population

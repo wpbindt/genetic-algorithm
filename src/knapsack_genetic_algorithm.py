@@ -1,13 +1,13 @@
 from __future__ import annotations
 from dataclasses import dataclass
-from typing import Callable, List
+from typing import Callable
 
 from .bit_string_breeder import BitStringBreeder
 from .bit_string_mutator import BitStringMutator
 from .genetic_algorithm import GeneticAlgorithm
 from .tournament_selector import TournamentSelector
 
-BitStringType = List[bool]
+BitStringType = list[bool]
 
 
 class KnapsackGA(GeneticAlgorithm[BitStringType]):
@@ -46,6 +46,6 @@ class KnapsackGA(GeneticAlgorithm[BitStringType]):
 
 @dataclass
 class KnapsackDefinition:
-    weights: List[float]
-    values: List[float]
+    weights: list[float]
+    values: list[float]
     max_weight: float
